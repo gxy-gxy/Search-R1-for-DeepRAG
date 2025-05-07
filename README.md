@@ -2,6 +2,7 @@
 
 see `scripts/data_preprocess/deeprag.py`  and `scripts/nq_hotpotqa/v0.2/train_deeprag_grpo.sh`
 
+BM25 launch turtorial: https://github.com/oneal2000/DRAGIN
 
 ---
 # Search-R1: Train your LLMs to reason and call a search engine with reinforcement learning
