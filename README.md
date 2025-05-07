@@ -1,3 +1,5 @@
+# Implement DeepRAG Stage II Optimization with RL
+
 # Search-R1: Train your LLMs to reason and call a search engine with reinforcement learning
 
 <!-- <strong>Search-R1</strong> is a reinforcement learning framework for <em>training reasoning and searching (tool-call) interleaved LLMs</em>.  -->
