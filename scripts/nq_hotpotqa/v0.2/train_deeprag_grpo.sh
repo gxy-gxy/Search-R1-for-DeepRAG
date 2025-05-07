@@ -1,11 +1,7 @@
-# # 全局配置优先级高，默认配置文件存放在/root/.config/pip/pip.conf
-# pip config set global.index-url https://mirrors.tencent.com/pypi/simple/
-# pip config set global.extra-index-url https://mirrors.tencent.com/repository/pypi/tencent_pypi/simple
-# pip config set global.trusted-host mirrors.tencent.com
 
 # pip install beir
 # pip install elasticsearch==7.17.9
-# pip install -e /mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/Search-R1
+# pip install -e xinyanguan/Search-R1
 # pip install nvidia-cublas-cu12==12.4.5.8
 
 
@@ -21,8 +17,8 @@ WAND_PROJECT="Search-R1"
 # export BASE_MODEL='Qwen/Qwen2.5-3B-Instruct'
 # export EXPERIMENT_NAME=${train_data}-${test_data}-search-r1-grpo-qwen2.5-3b-it-em
 # export BASE_MODEL='Qwen/Qwen2.5-7B'
-# export BASE_MODEL='/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/hf_models/Qwen2.5-7B-Instruct'
-export BASE_MODEL='/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/deeprag_checkpoint/llama-sft/hotpot-wikihop-full'
+# export BASE_MODEL='xinyanguan/hf_models/Qwen2.5-7B-Instruct'
+export BASE_MODEL='xinyanguan/deeprag_checkpoint/llama-sft/hotpot-wikihop-full'
 export EXPERIMENT_NAME=deeprag-grpo-train
 # export BASE_MODEL='Qwen/Qwen2.5-7B-Instruct'
 # export EXPERIMENT_NAME=${train_data}-${test_data}-search-r1-grpo-qwen2.5-7b-it-em
@@ -42,8 +38,8 @@ export ES_HOST=30.246.242.73
 wandb offline
 ray stop
 PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
-    data.train_files=/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/Search-R1/data/deeprag/train.parquet \
-    data.val_files=/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/Search-R1/data/hotpot-dev-1k/train.parquet \
+    data.train_files=xinyanguan/Search-R1/data/deeprag/train.parquet \
+    data.val_files=xinyanguan/Search-R1/data/hotpot-dev-1k/train.parquet \
     data.train_data_num=null \
     data.val_data_num=null \
     data.train_batch_size=32 \
@@ -90,7 +86,7 @@ PYTHONUNBUFFERED=1 python3 -m verl.trainer.main_ppo \
     trainer.total_epochs=15 \
     trainer.total_training_steps=1005 \
     trainer.default_hdfs_dir=null \
-    trainer.default_local_dir=/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/Search-R1/verl_checkpoints/$EXPERIMENT_NAME \
+    trainer.default_local_dir=xinyanguan/Search-R1/verl_checkpoints/$EXPERIMENT_NAME \
     max_turns=8 \
     retriever.url="http://127.0.0.1:8000/retrieve" \
     retriever.topk=3 \
