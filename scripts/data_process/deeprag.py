@@ -51,7 +51,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
     data_source = 'nq'
 
-    files = ['/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/deeprag_checkpoint/data/wikihop/dpo_new.jsonl','/mnt/geminiszgmcephfs/geminicephfs/pr-others-prctrans/xinyanguan/deeprag_checkpoint/data/hotpot/dpo_new.jsonl']
+    files = ['data/wikihop/dpo_new.jsonl','data/hotpot/dpo_new.jsonl']
     # Load and process JSON data
     train_data = []
     for file in files:
