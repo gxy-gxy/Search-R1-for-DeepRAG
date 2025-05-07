@@ -1,5 +1,9 @@
 # Implement DeepRAG Stage II Optimization with RL
 
+see `scripts/data_preprocess/deeprag.py`  and `scripts/nq_hotpotqa/v0.2/train_deeprag_grpo.sh`
+
+
+---
 # Search-R1: Train your LLMs to reason and call a search engine with reinforcement learning
 
 <!-- <strong>Search-R1</strong> is a reinforcement learning framework for <em>training reasoning and searching (tool-call) interleaved LLMs</em>.  -->
