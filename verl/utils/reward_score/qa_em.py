@@ -92,8 +92,10 @@ def compute_score_em(solution_str, ground_truth, method='strict', format_score=0
         format_score: the score for the format
         score: the score for the correct answer
     """
-    answer = extract_solution(solution_str=solution_str)
-    do_print = random.randint(1, 64) == 1
+    # answer = extract_solution(solution_str=solution_str)
+    answer = solution_str.split("<answer short>")[-1].split("</answer short>")[0]
+    # do_print = random.randint(1, 64) == 1
+    do_print = True
     
     if do_print:
         print(f"--------------------------------")
@@ -105,9 +107,18 @@ def compute_score_em(solution_str, ground_truth, method='strict', format_score=0
         return 0
     else:
         if em_check(answer, ground_truth['target']):
-            return score
+            retrieve_count = solution_str.count("Let's search") - 1
+            retrieve_cache = 5
+            if retrieve_count > retrieve_cache:
+                return 0.5
+            else:
+                return 1 - 0.1 * retrieve_count
+            # return score
         else:
-            return format_score
+            if "<answer short>" in solution_str and "</answer short>" in solution_str:
+                return 0.1
+            else:
+                return 0
 
 
 def compute_score_subem(solution_str, ground_truth, method='strict', format_score=0., score=1.):
