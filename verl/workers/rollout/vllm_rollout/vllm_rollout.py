@@ -110,7 +110,7 @@ class vLLMRollout(BaseRollout):
 
         # we may detokenize the result all together later
         if vllm_version in ('0.4.2', '0.5.4', '0.6.3'):
-            kwargs['detokenize'] = False
+            kwargs['detokenize'] = True
 
         # supporting adding any sampling params from the config file
         for k in config.keys():
@@ -169,9 +169,11 @@ class vLLMRollout(BaseRollout):
                 'temperature': 0,
                 'n': 1  # if greedy, only 1 response
             }
-
+        if 'stop' in prompts.meta_info:
+            kwargs['stop']  = prompts.meta_info['stop']
         # users can customize different sampling_params at different run
         with self.update_sampling_params(**kwargs):
+            print(f"updated sampling params: {self.sampling_params}")
             output = self.inference_engine.generate(
                 prompts=None,  # because we have already convert it to prompt token id
                 sampling_params=self.sampling_params,
